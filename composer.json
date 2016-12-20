@@ -1,0 +1,12 @@
+{
+    "name": "twn39/delaymq",
+    "require": {
+        "php-amqplib/php-amqplib": "^2.6"
+    },
+    "authors": [
+        {
+            "name": "tangweinan",
+            "email": "tangweinan@guoshangtou.com"
+        }
+    ]
+}
