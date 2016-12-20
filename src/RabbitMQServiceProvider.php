@@ -9,12 +9,9 @@ class RabbitMQServiceProvider extends ServiceProvider
 {
     /**
      * Bootstrap any application services.
-     *
-     * @return void
      */
     public function boot()
     {
-        //
         $this->publishes([
             __DIR__.'/config/rabbitmq.php' => config_path('rabbitmq.php'),
         ]);
@@ -22,12 +19,9 @@ class RabbitMQServiceProvider extends ServiceProvider
 
     /**
      * Register any application services.
-     *
-     * @return void
      */
     public function register()
     {
-        //
         $this->app->singleton(AMQPStreamConnection::class, function () {
             return new AMQPStreamConnection(
                 config('rabbitmq.host'),

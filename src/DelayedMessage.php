@@ -35,10 +35,10 @@ class DelayedMessage implements DelayMessageInterface
         }
 
         $this->channel->exchange_declare($this->exchange, 'x-delayed-message', false, true, false, false, false, new AMQPTable(array(
-            "x-delayed-type" => "fanout"
+            'x-delayed-type' => 'fanout',
         )));
         $this->channel->queue_declare($this->queue, false, false, false, false, false, new AMQPTable(array(
-            "x-dead-letter-exchange" => "delayed"
+            'x-dead-letter-exchange' => 'delayed',
         )));
 
         $this->channel->queue_bind($this->queue, $this->exchange);
@@ -61,7 +61,7 @@ class DelayedMessage implements DelayMessageInterface
     }
 
     /**
-     * 发布消息
+     * 发布消息.
      *
      * @param $message
      * @param $ttl
@@ -72,20 +72,19 @@ class DelayedMessage implements DelayMessageInterface
             $this->bind();
             $this->bound = true;
         }
-        $headers = new AMQPTable(array("x-delay" => $ttl));
+        $headers = new AMQPTable(array('x-delay' => $ttl));
         $message = new AMQPMessage(json_encode($message), array('delivery_mode' => 2));
         $message->set('application_headers', $headers);
         $this->channel->basic_publish($message, $this->exchange);
     }
 
     /**
-     * 消费消息
+     * 消费消息.
      *
      * @param $callback
      */
     public function consume(Closure $callback)
     {
-
         $this->channel->basic_consume($this->queue, '', false, true, false, false, $callback);
 
         while (count($this->channel->callbacks)) {
@@ -93,9 +92,6 @@ class DelayedMessage implements DelayMessageInterface
         }
     }
 
-    /**
-     *
-     */
     public function __destruct()
     {
         $this->channel->close();

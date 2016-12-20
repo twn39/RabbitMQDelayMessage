@@ -5,6 +5,9 @@
         "php": ">=5.5.0",
         "php-amqplib/php-amqplib": "^2.6"
     },
+    "require-dev": {
+        "friendsofphp/php-cs-fixer": "^1.12"
+    },
     "authors": [
         {
             "name": "twn39",
