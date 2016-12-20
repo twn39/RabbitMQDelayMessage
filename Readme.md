@@ -1,5 +1,17 @@
 ## Usage
 
+在`config/app.php`中加入：
+
+```php
+ Wang\RabbitMQ\RabbitMQServiceProvider::class
+```
+
+执行命令：
+
+```php
+php artisan vendor:publish
+```
+
 ### Publish
 
 ```php
