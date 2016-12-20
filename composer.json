@@ -1,12 +1,20 @@
 {
-    "name": "twn39/delaymq",
+    "name": "twn39/rabbitmq-delay-message",
+    "description": "rabbitmq delay message for laravel.",
     "require": {
+        "php": ">=5.5.0",
         "php-amqplib/php-amqplib": "^2.6"
     },
     "authors": [
         {
-            "name": "tangweinan",
-            "email": "tangweinan@guoshangtou.com"
+            "name": "twn39",
+            "email": "twn39@163.com"
         }
-    ]
+    ],
+    "autoload": {
+        "psr-4": {
+            "Wang\\RabbitMQ\\": "src/"
+        }
+    },
+    "license": "MIT"
 }
