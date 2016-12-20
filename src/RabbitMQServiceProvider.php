@@ -16,7 +16,7 @@ class RabbitMQServiceProvider extends ServiceProvider
     {
         //
         $this->publishes([
-            __DIR__.'/../rabbitmq.php' => config_path('rabbitmq.php'),
+            __DIR__.'/config/rabbitmq.php' => config_path('rabbitmq.php'),
         ]);
     }
 
